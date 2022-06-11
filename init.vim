@@ -27,6 +27,7 @@ Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'folke/zen-mode.nvim'
 Plug 'stevearc/aerial.nvim'
+Plug 'akinsho/toggleterm.nvim'
 "Plug 'wfxr/minimap.vim'
 "Plug 'drzel/vim-gui-zoom'
 
@@ -93,8 +94,19 @@ set nofoldenable
 
 set completeopt=menu,menuone,noselect
 
-" Terminal
-nnoremap <C-t> :tabnew +term<CR>
+" Toggleterm
+lua <<EOF
+require("toggleterm").setup{}
+EOF
+
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 " Aerial (symbols viewer)
 lua <<EOF
