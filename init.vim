@@ -22,6 +22,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-file-browser.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'b3nj5m1n/kommentary'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
@@ -49,14 +50,14 @@ set mouse=a
 
 set termguicolors
 set background=dark
-"colorscheme gruvbox
+colorscheme gruvbox
 
-lua <<EOF
-require('onedark').setup {
-    style = 'darker'
-}
-require('onedark').load()
-EOF
+" lua <<EOF
+" require('onedark').setup {
+"     style = 'darker'
+" }
+" require('onedark').load()
+" EOF
 
 set number
 set nowrap
@@ -274,7 +275,8 @@ require('telescope').setup{
   }
 }
 
-require("telescope").load_extension "file_browser"
+require("telescope").load_extension('file_browser')
+require("telescope").load_extension('fzf')
 
 vim.api.nvim_set_keymap("n", "<space>fb", ":Telescope file_browser", { noremap = true })
 EOF
