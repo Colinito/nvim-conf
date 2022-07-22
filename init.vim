@@ -14,6 +14,8 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'rafamadriz/friendly-snippets'
 
 " Utilities
@@ -75,11 +77,18 @@ set ffs=unix
 let g:node_host_prog = '/Users/colinb/.nvm/versions/node/v17.0.1/bin/node'
 
 " Keyboard mappings
-nnoremap <C-p> :Telescope find_files<Cr>
-nnoremap <C-l> :Telescope live_grep<Cr>
-nnoremap <C-_> :Telescope grep_string<Cr>
-nnoremap <C-s> :Telescope lsp_references<Cr>
-nnoremap <C-k> :Telescope buffers<Cr>
+" nnoremap <C-p> :Telescope find_files<Cr>
+" nnoremap <C-l> :Telescope live_grep<Cr>
+" nnoremap <C-_> :Telescope grep_string<Cr>
+" nnoremap <C-s> :Telescope lsp_references<Cr>
+" nnoremap <C-k> :Telescope buffers<Cr>
+
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+nnoremap <leader>fl <cmd>lua require('telescope.builtin').lsp_references()<cr>
+nnoremap <leader>fs <cmd>lua require('telescope.builtin').grep_string()<cr>
 
 " File explorer settings from https://shapeshed.com/vim-netrw/
 let g:netrw_banner = 0		" Remove directory banner
@@ -108,6 +117,11 @@ autocmd TermEnter term://*toggleterm#*
 " For example: 2<C-t> will open terminal 2
 nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" Lua Snip
+lua <<EOF
+require("luasnip.loaders.from_vscode").lazy_load()
+EOF
 
 " Aerial (symbols viewer)
 lua <<EOF
@@ -166,7 +180,8 @@ local cmp = require 'cmp'
 cmp.setup {
   snippet = {
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      --vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
     end,
   },
   mapping = {
@@ -182,7 +197,8 @@ cmp.setup {
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lsp_signature_help' },
-    { name = 'vsnip' }, -- For vsnip users.
+    { name = 'luasnip' }, -- For vsnip users.
+    --{ name = 'vsnip' }, -- For vsnip users.
   }, {
     { name = 'buffer' },
   })
