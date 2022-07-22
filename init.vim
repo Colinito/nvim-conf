@@ -76,19 +76,16 @@ set ffs=unix
 
 let g:node_host_prog = '/Users/colinb/.nvm/versions/node/v17.0.1/bin/node'
 
-" Keyboard mappings
-" nnoremap <C-p> :Telescope find_files<Cr>
-" nnoremap <C-l> :Telescope live_grep<Cr>
-" nnoremap <C-_> :Telescope grep_string<Cr>
-" nnoremap <C-s> :Telescope lsp_references<Cr>
-" nnoremap <C-k> :Telescope buffers<Cr>
-
+" Telescope keymaps
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>fl <cmd>lua require('telescope.builtin').lsp_references()<cr>
 nnoremap <leader>fs <cmd>lua require('telescope.builtin').grep_string()<cr>
+nnoremap <leader>bff <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
+nnoremap <leader>fc <cmd>lua require('telescope.builtin').git_commits()<cr>
+nnoremap <leader>fk <cmd>lua require('telescope.builtin').keymaps()<cr>
 
 " File explorer settings from https://shapeshed.com/vim-netrw/
 let g:netrw_banner = 0		" Remove directory banner
