@@ -1,0 +1,8 @@
+require('plugins')
+require('color')
+require('completion')
+require('treesitter')
+require('nvim-telescope')
+require('git')
+require('keymaps')
+require('cfg')
