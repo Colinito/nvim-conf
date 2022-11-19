@@ -9,6 +9,8 @@ vim.keymap.set('n', '<leader>fs', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>bff', builtin.current_buffer_fuzzy_find, {})
 vim.keymap.set('n', '<leader>fc', builtin.git_commits, {})
 vim.keymap.set('n', '<leader>fk', builtin.keymaps, {})
+local fb = require "telescope".extensions.file_browser.file_browser
+vim.keymap.set('n', '<space>fb', fb, {noremap = true})
 
 -- See `:help vim.lsp.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }

@@ -10,3 +10,8 @@ vim.o.number = true
 
 -- Set the file format to Unix so that DOS line endings appear as 
 vim.o.ffs = 'unix'
+
+-- Code folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()" 
+vim.opt.foldenable = false -- Disable folding by default
