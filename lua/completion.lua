@@ -75,3 +75,11 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+-- CSS LSP
+capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.cssls.setup {
+  capabilities = capabilities,
+}
