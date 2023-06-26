@@ -44,6 +44,20 @@ return require('packer').startup(function(use)
 
   use 'nvim-telescope/telescope-file-browser.nvim'
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use 'b3nj5m1n/kommentary'
+  -- use 'b3nj5m1n/kommentary'
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
   use 'kyazdani42/nvim-web-devicons'
+
+  -- File explorer
+  use {
+  'nvim-tree/nvim-tree.lua',
+  requires = {
+    'nvim-tree/nvim-web-devicons',
+  },
+}
 end)

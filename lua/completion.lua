@@ -65,7 +65,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'clangd', 'gopls', 'denols', 'gdscript', 'volar', 'tsserver', 'html' }
+local servers = { 'pyright', 'clangd', 'gopls', 'denols', 'gdscript', 'tsserver', 'html', 'marksman' }
 for _, lsp in ipairs(servers) do
   require('lspconfig')[lsp].setup {
     capabilities = capabilities,
@@ -75,6 +75,14 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+require'lspconfig'.volar.setup{
+  init_options = {
+    typescript = {
+      tsdk = '~/.nvm/versions/node/v18.12.1/lib/node_modules/typescript/lib/'
+    }
+  }
+}
 
 -- CSS LSP
 capabilities = vim.lsp.protocol.make_client_capabilities()
