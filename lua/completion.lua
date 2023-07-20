@@ -30,6 +30,10 @@ cmp.setup({
     -- { name = 'snippy' }, -- For snippy users.
   }, {
     { name = 'buffer' },
+    { name = 'calc' },
+    { name = 'path' },
+    { name = 'emoji' },
+    { name = 'nvim_lsp_signature_help' },
   })
 })
 
