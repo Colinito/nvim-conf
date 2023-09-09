@@ -15,3 +15,6 @@ vim.o.ffs = 'unix'
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()" 
 vim.opt.foldenable = false -- Disable folding by default
+
+-- Font
+vim.opt.guifont = "Hack Nerd Font:12"
