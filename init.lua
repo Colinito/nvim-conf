@@ -65,11 +65,16 @@ require('lazy').setup({
 
 	-- File explorer
 	{
-		'nvim-tree/nvim-tree.lua',
-		dependencies = {'nvim-tree/nvim-web-devicons'},
-		keys = {
-			{'n', '<leader>e', ":NvimTreeToggle<CR>", {silent = true}}
-		}
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup {}
+		end,
+
 	},
 
 	{
@@ -86,7 +91,6 @@ require('color')
 require('completion')
 require('treesitter')
 require('nvim-telescope')
-require('tree')
 require('git')
 require('keymaps')
 require('cfg')
