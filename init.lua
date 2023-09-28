@@ -85,6 +85,35 @@ require('lazy').setup({
 		}
 	},
 
+	-- Paint.nvim is used to create unique color highlights for Markdown headings
+	{
+		"folke/paint.nvim",
+		config = function()
+			local hlmap = {
+				["^#%s+(.-)%s*$"] = "Operator",
+				["^##%s+(.-)%s*$"] = "Type",
+				["^###%s+(.-)%s*$"] = "String",
+				["^####%s+(.-)%s*$"] = "Constant",
+				["^#####%s+(.-)%s*$"] = "Directory",
+				["^######%s+(.-)%s*$"] = "Comment",
+			}
+
+			local highlights = {}
+			for pattern, hl in pairs(hlmap) do
+				table.insert(highlights, {
+				filter = { filetype = "markdown" },
+				pattern = pattern,
+				hl = hl,
+			  })
+			end
+
+			require("paint").setup({
+				---@type PaintHighlight[]
+				highlights = highlights,
+			})
+		end,
+	}
+
 })
 
 require('color')
