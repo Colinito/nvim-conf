@@ -31,6 +31,16 @@ require('lazy').setup({
 	'hrsh7th/cmp-nvim-lsp-signature-help',
 	'hrsh7th/nvim-cmp',
 
+	-- Debugging
+	'mfussenegger/nvim-dap',
+	{
+		'rcarriga/nvim-dap-ui',
+		dependencies = {'mfussenegger/nvim-dap'},
+		config = function()
+			require('dapui').setup()
+		end
+	},
+
 	-- Snippets
 	'hrsh7th/cmp-vsnip',
 	'hrsh7th/vim-vsnip',
@@ -123,3 +133,18 @@ require('nvim-telescope')
 require('git')
 require('keymaps')
 require('cfg')
+
+-- Go debugger setup
+require('dap.ext.vscode').load_launchjs('launch.json', {})
+
+local dap = require('dap')
+dap.adapters.go = {
+    type = "server",
+    port = '61234',
+    executable = {
+      command = 'dlv',
+      args = {'dap', '-l', '127.0.0.1:61234'},
+    },
+}
+
+vim.fn.sign_define('DapBreakpoint', {text = '🅱️', texthl = '', linehl = '', numhl = ''})

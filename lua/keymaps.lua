@@ -31,3 +31,12 @@ vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
 vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, opts)
 
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
+
+-- Debugging
+vim.keymap.set('n', '<leader>dc', ':lua require("dap").continue()<CR>')
+vim.keymap.set('n', '<leader>dn', ':lua require("dap").step_over()<CR>')
+vim.keymap.set('n', '<leader>ds', ':lua require("dap").step_into()<CR>')
+vim.keymap.set('n', '<leader>do', ':lua require("dap").step_out()<CR>')
+vim.keymap.set('n', '<leader>dt', ':lua require("dap").terminate()<CR>')
+vim.keymap.set('n', '<leader>db', ':lua require("dap").toggle_breakpoint()<CR>')
+vim.keymap.set('n', '<leader>du', ':lua require("dapui").toggle()<CR>')
