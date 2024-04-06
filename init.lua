@@ -34,11 +34,11 @@ require('lazy').setup({
 	-- Debugging
 	'mfussenegger/nvim-dap',
 	{
-		'rcarriga/nvim-dap-ui',
-		dependencies = {'mfussenegger/nvim-dap'},
-		config = function()
-			require('dapui').setup()
-		end
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio"
+		}
 	},
 
 	-- Snippets
@@ -56,6 +56,7 @@ require('lazy').setup({
 	-- Icons
 	'nvim-tree/nvim-web-devicons',
 
+	-- Telescope
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.4',
 		dependencies = {'nvim-lua/plenary.nvim'}
@@ -68,6 +69,7 @@ require('lazy').setup({
 		build = 'make'
 	},
 
+	-- Comment plugin
 	{
 		'numToStr/Comment.nvim',
 		config = function() require('Comment').setup() end
@@ -87,6 +89,7 @@ require('lazy').setup({
 
 	},
 
+	-- Terminal
 	{
 		'akinsho/toggleterm.nvim',
 		version = "*",
@@ -122,8 +125,24 @@ require('lazy').setup({
 				highlights = highlights,
 			})
 		end,
-	}
+	},
 
+	-- Markdown editing improvements
+	{
+		'jakewvincent/mkdnflow.nvim',
+		config = function()
+			require('mkdnflow').setup({
+				-- Make completed symbol a lower-case x
+				to_do = {
+					symbols = {' ', '-', 'x'},
+					update_parents = true,
+					not_started = ' ',
+					in_progress = '-',
+					complete = 'x'
+				},
+			})
+		end
+	}
 })
 
 require('color')
