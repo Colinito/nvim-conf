@@ -16,10 +16,6 @@ require('lazy').setup({
 	-- Treesitter
 	'nvim-treesitter/nvim-treesitter',
 
-	-- Colorscheme
-	'ellisonleao/gruvbox.nvim',
-	'folke/tokyonight.nvim',
-
 	-- Auto-completion
 	'neovim/nvim-lspconfig',
 	'hrsh7th/cmp-nvim-lsp',
@@ -67,12 +63,6 @@ require('lazy').setup({
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build = 'make'
-	},
-
-	-- Comment plugin
-	{
-		'numToStr/Comment.nvim',
-		config = function() require('Comment').setup() end
 	},
 
 	-- File explorer
