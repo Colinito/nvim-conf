@@ -157,3 +157,6 @@ dap.adapters.go = {
 }
 
 vim.fn.sign_define('DapBreakpoint', {text = '🅱️', texthl = '', linehl = '', numhl = ''})
+
+local dapui = require('dapui')
+dapui.setup()
