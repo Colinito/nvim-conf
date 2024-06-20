@@ -27,6 +27,24 @@ require('lazy').setup({
 	'hrsh7th/cmp-nvim-lsp-signature-help',
 	'hrsh7th/nvim-cmp',
 
+	{
+		'hrsh7th/nvim-cmp',
+		dependencies = {
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+			'hrsh7th/cmp-cmdline',
+			'hrsh7th/cmp-calc',
+			'hrsh7th/cmp-emoji',
+			'hrsh7th/cmp-nvim-lsp-signature-help',
+
+			-- Snippets
+			{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+			"saadparwaiz1/cmp_luasnip",
+			'rafamadriz/friendly-snippets',
+		}
+	},
+
 	-- Debugging
 	'mfussenegger/nvim-dap',
 	{
@@ -36,11 +54,6 @@ require('lazy').setup({
 			"nvim-neotest/nvim-nio"
 		}
 	},
-
-	-- Snippets
-	'hrsh7th/cmp-vsnip',
-	'hrsh7th/vim-vsnip',
-	'rafamadriz/friendly-snippets',
 
 	-- Git integration
 	'lewis6991/gitsigns.nvim',
@@ -160,3 +173,6 @@ vim.fn.sign_define('DapBreakpoint', {text = '🅱️', texthl = '', linehl = '',
 
 local dapui = require('dapui')
 dapui.setup()
+
+-- Load friendly snippets
+require('luasnip.loaders.from_vscode').lazy_load()
