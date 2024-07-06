@@ -18,14 +18,6 @@ require('lazy').setup({
 
 	-- Auto-completion
 	'neovim/nvim-lspconfig',
-	'hrsh7th/cmp-nvim-lsp',
-	'hrsh7th/cmp-buffer',
-	'hrsh7th/cmp-path',
-	'hrsh7th/cmp-cmdline',
-	'hrsh7th/cmp-calc',
-	'hrsh7th/cmp-emoji',
-	'hrsh7th/cmp-nvim-lsp-signature-help',
-	'hrsh7th/nvim-cmp',
 
 	{
 		'hrsh7th/nvim-cmp',
@@ -58,39 +50,18 @@ require('lazy').setup({
 	-- Git integration
 	'lewis6991/gitsigns.nvim',
 
-	  -- Telescope
-	'nvim-lua/popup.nvim',
-	'nvim-lua/plenary.nvim',
-
-	-- Icons
-	'nvim-tree/nvim-web-devicons',
-
 	-- Telescope
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.4',
-		dependencies = {'nvim-lua/plenary.nvim'}
-	},
-
-	'nvim-telescope/telescope-file-browser.nvim',
-
-	{
-		'nvim-telescope/telescope-fzf-native.nvim',
-		build = 'make'
-	},
-
-	-- File explorer
-	{
-		"nvim-tree/nvim-tree.lua",
-		version = "*",
-		lazy = false,
 		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("nvim-tree").setup {}
-		end,
-
+			'nvim-lua/plenary.nvim',
+			'nvim-lua/popup.nvim',
+			'nvim-tree/nvim-web-devicons',
+			'nvim-telescope/telescope-file-browser.nvim',
+			{'nvim-telescope/telescope-fzf-native.nvim', build='make'}
+		}
 	},
+
 
 	-- Terminal
 	{
@@ -148,31 +119,36 @@ require('lazy').setup({
 	}
 })
 
-require('color')
+-- General config
+
+-- Show a line at 80 columns
+-- vim.o.colorcolumn = '80'
+
+-- Show a horizontal line where the cursor is
+vim.o.cursorline = true
+
+vim.o.termguicolors = true
+
+vim.o.number = true
+
+-- Set the file format to Unix so that DOS line endings appear as 
+vim.o.ffs = 'unix'
+
+-- Code folding
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()" 
+vim.opt.foldenable = false -- Disable folding by default
+
+-- GUI Font
+vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h10"
+
+vim.o.background = "dark" -- or "light" for light mode
+vim.cmd([[colorscheme retrobox]]) -- requires neovim 0.10.0 or greater
+
+
+-- Plugin configurations
 require('completion')
 require('treesitter')
 require('nvim-telescope')
 require('git')
-require('keymaps')
-require('cfg')
-
--- Go debugger setup
-require('dap.ext.vscode').load_launchjs('launch.json', {})
-
-local dap = require('dap')
-dap.adapters.go = {
-    type = "server",
-    port = '61234',
-    executable = {
-      command = 'dlv',
-      args = {'dap', '-l', '127.0.0.1:61234'},
-    },
-}
-
-vim.fn.sign_define('DapBreakpoint', {text = '🅱️', texthl = '', linehl = '', numhl = ''})
-
-local dapui = require('dapui')
-dapui.setup()
-
--- Load friendly snippets
-require('luasnip.loaders.from_vscode').lazy_load()
+require('debugger')
