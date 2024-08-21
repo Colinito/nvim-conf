@@ -12,159 +12,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
-	-- Treesitter
-	'nvim-treesitter/nvim-treesitter',
-
-	-- Auto-completion
-	'neovim/nvim-lspconfig',
-
-	{
-		'hrsh7th/nvim-cmp',
-		dependencies = {
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline',
-			'hrsh7th/cmp-calc',
-			'hrsh7th/cmp-emoji',
-			'hrsh7th/cmp-nvim-lsp-signature-help',
-
-			-- Snippets
-			{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
-			"saadparwaiz1/cmp_luasnip",
-			'rafamadriz/friendly-snippets',
-		}
-	},
-
-	-- Debugging
-	'mfussenegger/nvim-dap',
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"nvim-neotest/nvim-nio"
-		}
-	},
-
-	-- Git integration
-	'lewis6991/gitsigns.nvim',
-
-	-- Telescope
-	{
-		'nvim-telescope/telescope.nvim', tag = '0.1.4',
-		dependencies = {
-			'nvim-lua/plenary.nvim',
-			'nvim-lua/popup.nvim',
-			'nvim-tree/nvim-web-devicons',
-			'nvim-telescope/telescope-file-browser.nvim',
-			{'nvim-telescope/telescope-fzf-native.nvim', build='make'}
-		}
-	},
-
-
-	-- Terminal
-	{
-		'akinsho/toggleterm.nvim',
-		version = "*",
-		opts = {
-			open_mapping = [[<leader>tt]],
-		}
-	},
-
-	{
-		"folke/trouble.nvim",
-		opts = {}, -- for default options, refer to the configuration section for custom setup.
-		cmd = "Trouble",
-		keys = {
-			{
-				"<leader>xx",
-				"<cmd>Trouble diagnostics toggle<cr>",
-				desc = "Diagnostics (Trouble)",
-			},
-			{
-				"<leader>xX",
-				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-				desc = "Buffer Diagnostics (Trouble)",
-			},
-			{
-				"<leader>cs",
-				"<cmd>Trouble symbols toggle focus=false<cr>",
-				desc = "Symbols (Trouble)",
-			},
-			{
-				"<leader>cl",
-				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-				desc = "LSP Definitions / references / ... (Trouble)",
-			},
-			{
-				"<leader>xL",
-				"<cmd>Trouble loclist toggle<cr>",
-				desc = "Location List (Trouble)",
-			},
-			{
-				"<leader>xQ",
-				"<cmd>Trouble qflist toggle<cr>",
-				desc = "Quickfix List (Trouble)",
-			},
-		},
-	},
-
-	-- Paint.nvim is used to create unique color highlights for Markdown headings
-	{
-		"folke/paint.nvim",
-		config = function()
-			local hlmap = {
-				["^#%s+(.-)%s*$"] = "Operator",
-				["^##%s+(.-)%s*$"] = "Type",
-				["^###%s+(.-)%s*$"] = "String",
-				["^####%s+(.-)%s*$"] = "Constant",
-				["^#####%s+(.-)%s*$"] = "Directory",
-				["^######%s+(.-)%s*$"] = "Comment",
-			}
-
-			local highlights = {}
-			for pattern, hl in pairs(hlmap) do
-				table.insert(highlights, {
-				filter = { filetype = "markdown" },
-				pattern = pattern,
-				hl = hl,
-			  })
-			end
-
-			require("paint").setup({
-				---@type PaintHighlight[]
-				highlights = highlights,
-			})
-		end,
-	},
-
-	-- Markdown editing improvements
-	{
-		'jakewvincent/mkdnflow.nvim',
-		config = function()
-			require('mkdnflow').setup({
-				-- Make completed symbol a lower-case x
-				to_do = {
-					symbols = {' ', '-', 'x'},
-					update_parents = true,
-					not_started = ' ',
-					in_progress = '-',
-					complete = 'x'
-				},
-			})
-		end
-	}
-})
+-- Plugin configurations
+require('lazy').setup('plugins')
 
 -- General config
-
--- Show a line at 80 columns
--- vim.o.colorcolumn = '80'
-
--- Show a horizontal line where the cursor is
-vim.o.cursorline = true
-
 vim.o.termguicolors = true
 
 vim.o.number = true
@@ -183,10 +34,8 @@ vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h10"
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme retrobox]]) -- requires neovim 0.10.0 or greater
 
+-- Show a line at 80 columns
+-- vim.o.colorcolumn = '80'
 
--- Plugin configurations
-require('completion')
-require('treesitter')
-require('nvim-telescope')
-require('git')
-require('debugger')
+-- Show a horizontal line where the cursor is
+-- vim.o.cursorline = false
