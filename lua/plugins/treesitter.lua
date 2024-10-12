@@ -17,8 +17,8 @@ return {
 				enable = true,
 				keymaps = {
 					-- set to `false` to disable one of the mappings
-					init_selection = "<C-space>",
-					node_incremental = "<C-space",
+					init_selection = "gnn",
+					node_incremental = "grn",
 					scope_incremental = "grc",
 					node_decremental = "grm",
 				},

@@ -13,7 +13,7 @@ return {
 			'gopls',
 			'denols',
 			'gdscript',
-			'tsserver',
+			'ts_ls',
 			'html',
 			'marksman'
 		}
@@ -27,9 +27,17 @@ return {
 			}
 		end
 
-		-- Install @vue/language-server and @vue/typescript-plugin to make this work
+		-- NOTE: Install @vue/language-server and @vue/typescript-plugin to make this work
+		-- TODO: Make this work for MacOS
 		require'lspconfig'.volar.setup{
-			filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+			filetypes = {
+				'typescript',
+				'javascript',
+				'javascriptreact',
+				'typescriptreact',
+				'vue',
+				'json'
+			},
 			init_options = {
 				typescript = {
 					tsdk = '/usr/local/bin/vue-language-server'
