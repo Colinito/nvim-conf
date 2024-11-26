@@ -1,6 +1,6 @@
 return {
 	'mfussenegger/nvim-dap',
-	{
+	dependencies = {
 		"rcarriga/nvim-dap-ui",
 		dependencies = {
 			"mfussenegger/nvim-dap",
@@ -49,8 +49,7 @@ return {
 			},
 		}
 
-		dap.ext.vscode.load_launchjs('./launch.json', {})
-		-- require('dap.ext.vscode').load_launchjs('./launch.json', {})
+		require('dap.ext.vscode').load_launchjs('./launch.json', {})
 
 		vim.fn.sign_define('DapBreakpoint', {
 			text = '🅱️',
