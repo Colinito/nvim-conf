@@ -14,7 +14,12 @@ return {
 
 	config = function()
 		local telescope = require('telescope')
-		telescope.setup({})
+		telescope.setup({
+			-- Display telescope preview in pane above picker
+			defaults = {
+				layout_strategy = "vertical",
+			},
+		})
 		telescope.load_extension('file_browser')
 		telescope.load_extension('fzf')
 
