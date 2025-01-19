@@ -1,14 +1,14 @@
 -- Install lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -17,9 +17,9 @@ require('lazy').setup('plugins')
 
 -- General config
 vim.o.termguicolors = true
-
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.wrap = false
 
 -- Set the file format to Unix so that DOS line endings appear as 
 vim.o.ffs = 'unix'
@@ -32,12 +32,8 @@ vim.opt.foldenable = false -- Disable folding by default
 -- GUI Font
 vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h10"
 
--- vim.o.background = "dark" -- or "light" for light mode
--- vim.cmd([[colorscheme retrobox]]) -- requires neovim 0.10.0 or greater
-vim.cmd[[colorscheme tokyonight]]
-
 -- Show a line at 120 columns
 vim.o.colorcolumn = '120'
 
 -- Show a horizontal line where the cursor is
--- vim.o.cursorline = false
+vim.o.cursorline = false
