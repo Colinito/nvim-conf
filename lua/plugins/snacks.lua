@@ -6,7 +6,7 @@ return {
 	---@type snacks.Config
 	opts = {
 		bigfile = { enabled = true },
-		dashboard = { enabled = true },
+		dashboard = { enabled = false },
 		explorer = { enabled = true },
 		indent = {
 			enabled = true,
@@ -24,7 +24,7 @@ return {
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = false }, -- NOTE: Smooth scroll is disabled
-		statuscolumn = { enabled = true },
+		statuscolumn = { enabled = false },
 		words = { enabled = true },
 		styles = {
 			notification = {
