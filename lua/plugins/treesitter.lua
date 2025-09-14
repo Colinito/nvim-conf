@@ -1,14 +1,14 @@
 return {
-	'nvim-treesitter/nvim-treesitter',
+	"nvim-treesitter/nvim-treesitter",
 	config = function()
 		local treesitter = require("nvim-treesitter.configs")
 
 		treesitter.setup({
 			highlight = {
-				enable = true
+				enable = true,
 			},
 			indent = {
-				enable = true
+				enable = true,
 			},
 			autotag = {
 				enable = true,
@@ -51,5 +51,5 @@ return {
 				"comment",
 			},
 		})
-	end
+	end,
 }
