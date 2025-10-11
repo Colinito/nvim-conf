@@ -1,19 +1,26 @@
 return {
 	{
-		"rebelot/kanagawa.nvim",
-		config = function()
-			vim.cmd([[colorscheme kanagawa]])
-		end,
+		"ellisonleao/gruvbox.nvim",
 	},
 	{
 		"folke/tokyonight.nvim",
 	},
 	{
-		"ellisonleao/gruvbox.nvim",
+		"rebelot/kanagawa.nvim",
 		priority = 1000,
 		config = function()
-			-- vim.o.background = "dark" -- or "light" for light mode
-			-- vim.cmd[[colorscheme gruvbox]]
+			require("kanagawa").setup({
+				colors = {
+					theme = {
+						all = {
+							ui = {
+								bg_gutter = "none"
+							}
+						}
+					}
+				}
+			})
+			vim.cmd[[colorscheme kanagawa]]
 		end,
 	},
 }

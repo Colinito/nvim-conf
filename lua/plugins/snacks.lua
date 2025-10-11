@@ -9,7 +9,7 @@ return {
 		dashboard = { enabled = false },
 		explorer = { enabled = true },
 		indent = {
-			enabled = true,
+			enabled = false,
 			-- I don't like the animations, so I turn them off.
 			animate = {
 				enabled = false,

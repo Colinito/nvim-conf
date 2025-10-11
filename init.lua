@@ -30,10 +30,15 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false -- Disable folding by default
 
 -- GUI Font
-vim.opt.guifont = "JetBrainsMono Nerd Font:h10"
+vim.opt.guifont = "JetBrainsMono Nerd Font:h12"
 
 -- Show a line at 120 columns
-vim.o.colorcolumn = "120"
+-- vim.o.colorcolumn = "120"
 
 -- Show a horizontal line where the cursor is
 vim.o.cursorline = false
+
+vim.o.linespace = 4
+
+-- Line number column padding
+vim.opt.statuscolumn = "%s%4l  "
