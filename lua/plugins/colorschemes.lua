@@ -1,6 +1,9 @@
 return {
 	{
 		"ellisonleao/gruvbox.nvim",
+		config = function()
+			vim.cmd[[colorscheme gruvbox]]
+		end
 	},
 	{
 		"folke/tokyonight.nvim",
@@ -20,7 +23,7 @@ return {
 					}
 				}
 			})
-			vim.cmd[[colorscheme kanagawa]]
+			-- vim.cmd[[colorscheme kanagawa]]
 		end,
 	},
 }

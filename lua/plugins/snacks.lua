@@ -25,7 +25,7 @@ return {
 		scope = { enabled = true },
 		scroll = { enabled = false }, -- NOTE: Smooth scroll is disabled
 		statuscolumn = { enabled = false },
-		words = { enabled = true },
+		words = { enabled = false },
 		styles = {
 			notification = {
 				-- wo = { wrap = true } -- Wrap notifications
