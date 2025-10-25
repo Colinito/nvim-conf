@@ -14,6 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugin configurations
 require("lazy").setup("plugins")
+require("config.lsp")
+require("config.background")
 
 -- General config
 vim.o.termguicolors = true
