@@ -9,7 +9,7 @@ return {
 		dashboard = { enabled = false },
 		explorer = { enabled = true },
 		indent = {
-			enabled = false,
+			enabled = true,
 			-- I don't like the animations, so I turn them off.
 			animate = {
 				enabled = false,
@@ -24,8 +24,8 @@ return {
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = false }, -- NOTE: Smooth scroll is disabled
-		statuscolumn = { enabled = false },
-		words = { enabled = false },
+		statuscolumn = { enabled = true },
+		words = { enabled = true },
 		styles = {
 			notification = {
 				-- wo = { wrap = true } -- Wrap notifications

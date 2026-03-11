@@ -1,14 +1,34 @@
 vim.lsp.enable({
-	'pyright',
-	'clangd',
-	'gopls',
-	'gdscript',
-	'ts_ls',
-	'html',
-	'marksman',
-	'lua_ls',
-	'cssls',
+	"pyright",
+	"clangd",
+	"gopls",
+	"gdscript",
+	"html",
+	"marksman",
+	"lua_ls",
+	"cssls",
 })
+
+-- Special handling for Vue
+-- Define the Vue plugin for TypeScript
+local vue_plugin_path = vim.fn.stdpath("data")
+	.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+vim.lsp.config("ts_ls", {
+	init_options = {
+		plugins = {
+			{
+				name = "@vue/typescript-plugin",
+				location = vue_plugin_path,
+				languages = { "vue" },
+			},
+		},
+	},
+	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+})
+
+-- Enable TypeScript LS
+vim.lsp.enable("ts_ls")
 
 -- Set up keymaps
 local opts = { noremap = true, silent = true }

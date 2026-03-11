@@ -4,13 +4,14 @@ return {
 		local conform = require("conform")
 		conform.setup({
 			formatters_by_ft = {
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				javascriptreact = { "prettier" },
-				typescriptreact = { "prettier" },
-				css = { "prettier" },
-				html = { "prettier" },
-				json = { "prettier" },
+				javascript = { "biome" },
+				typescript = { "biome" },
+				javascriptreact = { "biome" },
+				typescriptreact = { "biome" },
+				vue = {"biome", "prettier"},
+				css = { "biome" },
+				html = { "biome" },
+				json = { "biome" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
 				python = { "ruff_organize_imports", "ruff_fix", "ruff_format" },

@@ -49,8 +49,6 @@ return {
 			},
 		}
 
-		require("dap.ext.vscode").load_launchjs("./launch.json", {})
-
 		vim.fn.sign_define("DapBreakpoint", {
 			text = "🅱️",
 			texthl = "",
